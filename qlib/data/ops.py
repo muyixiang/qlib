@@ -1638,9 +1638,10 @@ def register_all_ops(C):
     logger = get_module_logger("ops")
 
     from qlib.data.pit import P, PRef  # pylint: disable=C0415
+    from qlib.data.ttm import TTM, LYR  # pylint: disable=C0415
 
     Operators.reset()
-    Operators.register(OpsList + [P, PRef])
+    Operators.register(OpsList + [P, PRef] + [TTM, LYR])
 
     if getattr(C, "custom_ops", None) is not None:
         Operators.register(C.custom_ops)
